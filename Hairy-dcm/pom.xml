@@ -1,0 +1,22 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>couk.nucmedone.hairy-dcm</groupId>
+	<artifactId>Hairy-dcm</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>Hairy-dcm</name>
+	<description>JavaFX UI for Dicom utilities</description>
+	<repositories>
+		<repository>
+			<id>dcm4che</id>
+			<url>http://www.dcm4che.org/maven2/</url>
+		</repository>
+	</repositories>
+	<dependencies>
+		<dependency>
+			<groupId>dcm4che.tool</groupId>
+			<artifactId>dcm4che-tool-dcmqr</artifactId>
+			<version>2.0.28</version>
+		</dependency>
+	</dependencies>
+</project>
