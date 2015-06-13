@@ -3,6 +3,7 @@ package couk.nucmedone.hairydcm;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
+import java.util.UUID;
 
 import org.dcm4che2.data.DicomObject;
 import org.dcm4che2.net.ConfigurationException;
@@ -14,7 +15,12 @@ import org.slf4j.LoggerFactory;
 public class HairyQR {
 
 	private static final Logger LOG = LoggerFactory.getLogger(DcmQR.class);
-
+	
+	/**
+	 * Uniquely identify this query
+	 */
+	private final UUID uuid;
+	
 	public static void main(String[] args) {
 
 		HairyQR hqr = new HairyQR();
@@ -34,10 +40,12 @@ public class HairyQR {
 	
 	public HairyQR() {
 		dcmqr = new DcmQR("Device");
+		uuid = UUID.randomUUID();
 	}
 	
 	public HairyQR(String name){
 		dcmqr = new DcmQR(name);
+		uuid = UUID.randomUUID();
 	}
 	
 	public void addQueryField(int tag, String match){
@@ -155,11 +163,15 @@ public class HairyQR {
 		}
 
 	}
+	
+	public UUID getUUID(){
+		return uuid;
+	}
 
 	private void queryUpdate(List<DicomObject> result) {
 
 		if (queryListener != null) {
-			queryListener.queryUpdate(result);
+			queryListener.queryUpdate(result, uuid);
 		}
 
 	}
